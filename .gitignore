@@ -1,0 +1,7 @@
+.gradle
+.settings
+.classpath
+.project
+
+/webapp/WEB-INF/classes/*
+/webapp/WEB-INF/lib/*
