@@ -7,7 +7,8 @@
 
     <servlet-mapping>
         <servlet-name>CoupServlet</servlet-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/page/*</url-pattern>
+        <url-pattern>/ajax/*</url-pattern>
     </servlet-mapping>
 
     <listener>
@@ -15,6 +16,6 @@
     </listener>
 
     <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
+        <welcome-file>page/gate/index/page</welcome-file>
     </welcome-file-list>
 </web-app>

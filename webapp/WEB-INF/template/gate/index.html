@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      th:include="envelope :: envelope">
+<div th:fragment="content">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="jumbotron">
+        <h2>きっとこのページにサービスの宣伝や説明を載せるよ！ </h2>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <p>ここには動画！？</p>
+      <p>Thymeleaf test↓</p>
+      <p th:text="${now}"></p>
+    </div>
+  </div>
+</div>
+</html>

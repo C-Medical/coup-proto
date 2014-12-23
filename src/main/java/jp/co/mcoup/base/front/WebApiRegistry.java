@@ -37,6 +37,10 @@ public final class WebApiRegistry {
 		logger.info("{}件のWEB-APIの読込完了。", apiMap.size());
 	}
 
+	public static WebApi getWebApi(String url) {
+		return apiMap.get(url);
+	}
+
 	private static class WebApiLoader implements ClassScanner.ClassVisitor {
 
 		@Override
@@ -71,7 +75,7 @@ public final class WebApiRegistry {
 					logger.warn("URLが重複しています！ >> {}", url);
 				}
 
-				apiMap.put(url, WebApi.of(url, method));
+				apiMap.put(url, WebApi.of(clazz, method));
 				logger.debug("WEB-API登録 : {}#{} >> {}", clazz.getName(), method.getName(), url);
 			}
 		}
