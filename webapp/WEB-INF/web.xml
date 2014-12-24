@@ -2,7 +2,7 @@
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
     <servlet>
         <servlet-name>CoupServlet</servlet-name>
-        <servlet-class>jp.co.mcoup.base.front.servlet.CoupServlet</servlet-class>
+        <servlet-class>jp.co.medicoup.base.front.servlet.CoupServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -12,10 +12,10 @@
     </servlet-mapping>
 
     <listener>
-        <listener-class>jp.co.mcoup.base.front.servlet.listener.CoupServletContextListener</listener-class>
+        <listener-class>jp.co.medicoup.base.front.servlet.listener.CoupServletContextListener</listener-class>
     </listener>
 
     <welcome-file-list>
-        <welcome-file>page/gate/index/page</welcome-file>
+        <welcome-file>page/top/index/first</welcome-file>
     </welcome-file-list>
 </web-app>

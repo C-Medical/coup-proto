@@ -26,12 +26,12 @@ repositories {
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
 eclipse {
-    project {
-        natures 'com.google.appengine.eclipse.core.gaeNature'
-    }
-    classpath {
-        defaultOutputDir = file('webapp/WEB-INF/classes')
-        containers 'com.google.appengine.eclipse.core.GAE_CONTAINER'
+	project {
+			natures 'com.google.appengine.eclipse.core.gaeNature'
+	}
+	classpath {
+		defaultOutputDir = file('webapp/WEB-INF/classes')
+		containers 'com.google.appengine.eclipse.core.GAE_CONTAINER'
 
 		file {
 			whenMerged { classpath ->
@@ -45,34 +45,36 @@ eclipse {
 }
 
 dependencies {
-    providedCompile 'javax.servlet:servlet-api:2.5'
+	providedCompile 'javax.servlet:servlet-api:2.5'
 
-    compile 'org.slf4j:slf4j-api:1.7.6'
-    compile 'joda-time:joda-time:2.+'
-    compile 'org.thymeleaf:thymeleaf:2.1.3.RELEASE'
-    compile 'org.apache.commons:commons-lang3:3.3.+'
-    compile 'commons-io:commons-io:2.+'
-    compile 'com.fasterxml.jackson.core:jackson-databind:2.4.+'
-    compile "com.google.appengine:appengine-api-1.0-sdk:$appengineVersion"
-    compile "com.google.appengine:appengine-api-labs:$appengineVersion"
+	compile 'org.slf4j:slf4j-api:1.7.6'
+	compile 'joda-time:joda-time:2.+'
+	compile 'org.thymeleaf:thymeleaf:2.1.3.RELEASE'
+	compile 'org.apache.commons:commons-lang3:3.3.+'
+	compile 'org.apache.commons:commons-collections4:4.0'
+	compile 'commons-io:commons-io:2.+'
+	compile 'com.fasterxml.jackson.core:jackson-databind:2.4.+'
+	compile 'com.fasterxml.jackson.datatype:jackson-datatype-joda:2.4.4'
+	compile "com.google.appengine:appengine-api-1.0-sdk:$appengineVersion"
+	compile "com.google.appengine:appengine-api-labs:$appengineVersion"
 
-    runtime 'ch.qos.logback:logback-classic:1.1.2'
+	runtime 'ch.qos.logback:logback-classic:1.1.2'
 
-    testCompile 'junit:junit:4.+'
+	testCompile 'junit:junit:4.+'
 
-    appengineSdk "om.google.appengine:appengine-java-sdk:$appengineVersion"
+	appengineSdk "om.google.appengine:appengine-java-sdk:$appengineVersion"
 }
 
 appengine {
-    httpPort = 8888
-    downloadSdk = true
+	httpPort = 8888
+	downloadSdk = true
 
-    warDir = file('src/main/webapp')
+	warDir = file('src/main/webapp')
 
-    appcfg {
-        email = 'medical.coup@gmail.com'
-        noCookies = true
-        oauth2 = true
-    }
+	appcfg {
+		email = 'medical.coup@gmail.com'
+		noCookies = true
+		oauth2 = true
+	}
 }
 

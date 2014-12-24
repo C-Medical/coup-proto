@@ -8,7 +8,7 @@
     </encoder>
   </appender>
 
-  <logger name="jp.co.mcoup" level="TRACE" additivity="false">
+  <logger name="jp.co.medicoup" level="TRACE" additivity="false">
     <appender-ref ref="CONSOLE" />
   </logger>
 </configuration>
