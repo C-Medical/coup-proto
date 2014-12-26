@@ -51,6 +51,11 @@ public final class PageHandler implements RequestHandler {
 			return;
 		}
 
+		if (!api.isSupportedMethod(req.getMethod())) {
+			resp.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
+			return;
+		}
+
 		@SuppressWarnings("unchecked")
 		final PageResult result = (PageResult)api.execute(req.getParameterMap());
 

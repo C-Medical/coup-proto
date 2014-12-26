@@ -3,6 +3,9 @@
       xmlns:th="http://www.thymeleaf.org"
       th:include="envelope :: envelope">
 <div th:fragment="content">
+
+  <!--/* TODO GAEのスピンアップのコストを考慮すると、indexページは完全に静的なのが良いのかも！ */-->
+
   <div class="row">
     <div class="col-md-6">
       <div class="jumbotron">
@@ -15,5 +18,7 @@
       <p th:text="${now}"></p>
     </div>
   </div>
+
+  <a href="/page/sample/sample/sample1">実装サンプルへ</a>
 </div>
 </html>

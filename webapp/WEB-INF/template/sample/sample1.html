@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      th:include="envelope :: envelope">
+<div th:fragment="content">
+  <h3>フレームワークのサンプルページその１</h3>
+
+  <hr />
+  <h4>Controllerでセットした変数を表示してみる</h4>
+  <ul>
+    <li th:text="${var1}"></li>
+    <li th:text="${var2}"></li>
+    <li th:text="${var3}"></li>
+  </ul>
+
+  <hr />
+  <h4>table要素にDTOの一覧を表示してみる</h4>
+  <table class="table table-bordered">
+    <thead>
+      <th>SampleDto.id</th>
+      <th>SampleDto.name</th>
+      <th>SampleDto.date</th>
+      <th>SampleDto.someValues</th>
+      <th>リンク</th>
+    </thead>
+    <tbody>
+      <tr th:each="dto : ${dtos}">
+        <td th:text="${dto.id}"></td>
+        <td th:text="${dto.name}"></td>
+        <td th:text="${dto.date}"></td>
+        <td>
+          <ul>
+            <li th:each="someValue : ${dto.someValues}" th:text="${someValue}"></li>
+          </ul>
+        </td>
+        <td><a th:href="@{/page/sample/sample/sample2(id=${dto.id})}">パラメータを渡して別ページへ遷移</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+</html>

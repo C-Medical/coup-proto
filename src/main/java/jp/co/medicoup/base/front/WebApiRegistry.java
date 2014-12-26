@@ -7,7 +7,6 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import jp.co.medicoup.base.AppConstants;
 import jp.co.medicoup.base.front.provide.PageResult;
-import jp.co.medicoup.base.front.provide.annotation.Controller;
 import jp.co.medicoup.base.front.provide.annotation.GET;
 import jp.co.medicoup.base.front.provide.annotation.POST;
 import jp.co.medicoup.base.util.ClassScanner;
@@ -17,6 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
+ * TODO GAEのスピンアップコストを考慮すると、起動時ではなく、要求時に都度処理が良いのか！
  *
  * @author izumi_j
  *
@@ -45,16 +45,12 @@ public final class WebApiRegistry {
 
 		@Override
 		public boolean accept(String className) {
+			// ~Controllerな名前のクラスをWEB-APIとして扱う
 			return StringUtils.endsWith(className, "Controller");
 		}
 
 		@Override
 		public void visit(Class<?> clazz) {
-			if (!clazz.isAnnotationPresent(Controller.class)) {
-				logger.warn("クラス名が'Controller'で終わっているが、@Controllerが付与されていないクラスがあります >> {}", clazz.getName());
-				return;
-			}
-
 			// publicで@GETか@POSTが付与されているメソッドが対象
 			for (Method method : clazz.getMethods()) {
 				if (!Modifier.isPublic(method.getModifiers())) {

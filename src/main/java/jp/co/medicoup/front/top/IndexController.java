@@ -4,12 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import jp.co.medicoup.base.front.provide.PageResult;
-import jp.co.medicoup.base.front.provide.annotation.Controller;
 import jp.co.medicoup.base.front.provide.annotation.GET;
 
 import org.joda.time.DateTime;
 
-@Controller
 public class IndexController {
 
 	@GET
