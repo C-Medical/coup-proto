@@ -1,30 +1,33 @@
-## ƒvƒƒgƒ^ƒCƒvŠJ”­Žè‡
+ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—é–‹ç™ºæ‰‹é †
+==========
 
-* **Gradle‚ðƒCƒ“ƒXƒg[ƒ‹**
+## [é–‹ç™ºç’°å¢ƒ]
+
+* **Gradleã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«**
 
 https://www.gradle.org/  
-¦Android StudioƒCƒ“ƒXƒg[ƒ‹Ï‚Ìê‡A\android-studio\gradle\gradle-2.2.1\bin‚ÉPath‚ð’Ê‚¹‚Î—Ç‚¢
+â€»Android Studioã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«æ¸ˆã®å ´åˆã€\android-studio\gradle\gradle-2.2.1\binã«Pathã‚’é€šã›ã°è‰¯ã„
 
 
-* **Eclipse‚ÉGoogleƒvƒ‰ƒOƒCƒ“‚ðƒCƒ“ƒXƒg[ƒ‹**
+* **Eclipseã«Googleãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«**
 
 https://dl.google.com/eclipse/plugin/4.x  
-ƒwƒ‹ƒv¨V‹Kƒ\ƒtƒgƒEƒFƒA‚ÌƒCƒ“ƒXƒg[ƒ‹‚ÅAã‹LURL‚©‚çƒ_ƒEƒ“ƒ[ƒh
+ãƒ˜ãƒ«ãƒ—â†’æ–°è¦ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã§ã€ä¸Šè¨˜URLã‹ã‚‰ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰
 
 
-* **coup-proto‚ðEclipse‚ÉƒCƒ“ƒ|[ƒg**
+* **coup-protoã‚’Eclipseã«ã‚¤ãƒ³ãƒãƒ¼ãƒˆ**
 
-cloneŒãAcoup-protoƒfƒBƒŒƒNƒgƒŠ‚ÅA`gradle eclipse`ƒRƒ}ƒ“ƒh‚ðŽÀs  
-¬Œ÷‚µ‚½‚çAƒtƒ@ƒCƒ‹¨ƒCƒ“ƒ|[ƒg¨ˆê”Ê¨Šù‘¶ƒvƒƒWƒFƒNƒg‚ð...‚ÅAEclipse‚ÉŽæ‚èž‚Þ
-
-
-* **ƒvƒƒWƒFƒNƒg‚ÌÝ’è**
-
-coup-protoƒvƒƒWƒFƒNƒg‚ÌƒvƒƒpƒeƒB¨Google¨Web Application‚ÅA  
-`warƒfƒBƒŒƒNƒgƒŠ—L`‚Éƒ`ƒFƒbƒN‚ð“ü‚êA`/webapp`ƒfƒBƒŒƒNƒgƒŠ‚ðŽw’è
+cloneå¾Œã€coup-protoãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã§ã€`gradle eclipse`ã‚³ãƒžãƒ³ãƒ‰ã‚’å®Ÿè¡Œ  
+æˆåŠŸã—ãŸã‚‰ã€ãƒ•ã‚¡ã‚¤ãƒ«â†’ã‚¤ãƒ³ãƒãƒ¼ãƒˆâ†’ä¸€èˆ¬â†’æ—¢å­˜ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’...ã§ã€Eclipseã«å–ã‚Šè¾¼ã‚€
 
 
-* **ƒ[ƒJƒ‹‚ÅŽÀs**
+* **ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã®è¨­å®š**
 
-—á‚¦‚ÎAcoup-protoƒvƒƒWƒFƒNƒg‚ð‰EƒNƒŠƒbƒN¨ŽÀs¨Web ApplicationiGoogleƒ}[ƒN‚Ìj  
-ƒuƒ‰ƒEƒU‚©‚çlocalhost:8888‚ÉƒAƒNƒZƒXI
+coup-protoãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£â†’Googleâ†’Web Applicationã§ã€  
+`warãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªæœ‰`ã«ãƒã‚§ãƒƒã‚¯ã‚’å…¥ã‚Œã€`webapp`ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’æŒ‡å®š
+
+
+* **ãƒ­ãƒ¼ã‚«ãƒ«ã§å®Ÿè¡Œ**
+
+ä¾‹ãˆã°ã€coup-protoãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’å³ã‚¯ãƒªãƒƒã‚¯â†’å®Ÿè¡Œâ†’Web Applicationï¼ˆGoogleãƒžãƒ¼ã‚¯ã®ï¼‰  
+ãƒ–ãƒ©ã‚¦ã‚¶ã‹ã‚‰localhost:8888ã«ã‚¢ã‚¯ã‚»ã‚¹ï¼

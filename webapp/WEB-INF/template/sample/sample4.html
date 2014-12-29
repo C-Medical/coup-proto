@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      th:include="envelope :: envelope">
+<div th:fragment="content">
+  <h3>サンプルページその４</h3>
+  <a th:href="@{/page/sample/sample/sample3}">その３へ</a>
+
+  <hr />
+  <h4>Ajaxで送信</h4>
+  <script type="text/javascript">
+    function postByAjax() {
+      $.ajax({
+        method : 'POST',
+        url : '/ajax/sample/sample/sample4Ajax',
+        data : {
+          dto : JSON.stringify({
+            id : 123,
+            name : 'hoge',
+            date : '1999-09-09T09:09:09'
+          }),
+          hoge : 'fuga'
+        }
+      }).done(function(res) {
+        $('#ajaxResult').text(JSON.stringify(res));
+      });
+    }
+  </script>
+  <button class="btn btn-default" onclick="postByAjax()">Post by Ajax</button>
+  <pre id="ajaxResult">サーバーからの結果をここに表示します</pre>
+
+  <hr />
+  <h4>HtmlFragmentを取得</h4>
+  <script type="text/javascript">
+    function getHtmlFragment() {
+      $.ajax({
+        method : 'GET',
+        url : '/ajax/sample/sample/sample4Fragment'
+      }).done(function(res) {
+        $('#htmlFragment').append(res);
+      });
+    }
+  </script>
+  <button class="btn btn-default" onclick="getHtmlFragment()">Get HtmlFragment</button>
+  <div id="htmlFragment" class="row"></div>
+
+</div>
+</html>

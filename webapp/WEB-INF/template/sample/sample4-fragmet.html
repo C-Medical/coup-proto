@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<div class="col-sm-3 table-responsive" style="padding: 2px;">
+  <table class="table table-bordered">
+    <tbody>
+      <tr>
+        <td>id</td>
+        <td th:text="${dto.id}"></td>
+      </tr>
+      <tr>
+        <td>name</td>
+        <td th:text="${dto.name}"></td>
+      </tr>
+      <tr>
+        <td>someValues</td>
+        <td><ul><li th:each="someValue : ${dto.someValues}" th:text="${someValue}"></li></ul></td>
+      </tr>
+      <tr>
+        <td>date</td>
+        <td th:text="${dto.date}"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</html>

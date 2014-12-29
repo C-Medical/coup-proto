@@ -16,7 +16,7 @@
   </listener>
 
   <welcome-file-list>
-    <welcome-file>page/top/index/first</welcome-file>
+    <welcome-file>top/index.html</welcome-file>
   </welcome-file-list>
 
   <!-- セッション情報クリア -->

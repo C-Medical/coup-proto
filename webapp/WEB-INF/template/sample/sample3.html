@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      th:include="envelope :: envelope">
+<div th:fragment="content">
+  <h3>サンプルページその３</h3>
+  <a th:href="@{/page/sample/sample/sample2}">その２へ</a>
+  <a th:href="@{/page/sample/sample/sample4}">その４へ</a>
+
+  <hr />
+  <h4>リダイレクトしてみる</h4>
+  <p>SampleController#sample3メソッドを見てみてください。</p>
+  <a th:href="@{/page/sample/sample/sample3?redirect=true}">/page/sample/sample/sample3?redirect=true</a>
+
+</div>
+</html>

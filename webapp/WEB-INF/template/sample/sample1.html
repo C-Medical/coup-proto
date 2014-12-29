@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org"
       th:include="envelope :: envelope">
 <div th:fragment="content">
-  <h3>フレームワークのサンプルページその１</h3>
+  <h3>サンプルページその１</h3>
 
   <hr />
   <h4>Controllerでセットした変数を表示してみる</h4>
@@ -17,11 +17,13 @@
   <h4>table要素にDTOの一覧を表示してみる</h4>
   <table class="table table-bordered">
     <thead>
-      <th>SampleDto.id</th>
-      <th>SampleDto.name</th>
-      <th>SampleDto.date</th>
-      <th>SampleDto.someValues</th>
-      <th>リンク</th>
+      <tr>
+        <th>SampleDto.id</th>
+        <th>SampleDto.name</th>
+        <th>SampleDto.date</th>
+        <th>SampleDto.someValues</th>
+        <th>リンク</th>
+      </tr>
     </thead>
     <tbody>
       <tr th:each="dto : ${dtos}">

@@ -1,7 +1,6 @@
 package jp.co.medicoup.base.front.servlet.handler;
 
 import java.io.IOException;
-import java.util.Map.Entry;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -9,8 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import jp.co.medicoup.base.front.WebApi;
 import jp.co.medicoup.base.front.WebApiRegistry;
-import jp.co.medicoup.base.front.provide.PageResult;
+import jp.co.medicoup.base.front.provide.HtmlFragment;
 import jp.co.medicoup.base.front.servlet.CoupServlet.RequestHandler;
+import jp.co.medicoup.base.json.ObjectMapperHolder;
 
 import org.thymeleaf.context.WebContext;
 
@@ -19,11 +19,11 @@ import org.thymeleaf.context.WebContext;
  * @author izumi_j
  *
  */
-public final class PageHandler implements RequestHandler {
+public final class AjaxHandler implements RequestHandler {
 
     private final ServletContext servletContext;// servlet-api-3.0からはrequestから取れるよ
 
-    public PageHandler(ServletContext servletContext) {
+    public AjaxHandler(ServletContext servletContext) {
         this.servletContext = servletContext;
     }
 
@@ -42,21 +42,18 @@ public final class PageHandler implements RequestHandler {
         }
 
         @SuppressWarnings("unchecked")
-        final PageResult result = (PageResult) api.execute(req.getParameterMap());
+        final Object result = api.execute(req.getParameterMap());
 
-        if (result.isRedirect()) {
-            final StringBuilder parameter = new StringBuilder();
-            for (Entry<String, ?> entry : result.getRedirectParams().entrySet()) {
-                parameter.append(parameter.length() == 0 ? "?" : "&");
-                parameter.append(entry.getKey()).append("=").append(entry.getValue());
-            }
-            resp.sendRedirect(result.getRedirectUrl() + parameter.toString());
-        } else {
+        if (result instanceof HtmlFragment) {
+            final HtmlFragment fragment = (HtmlFragment) result;
             final WebContext ctx = new WebContext(req, resp, servletContext);
-            ctx.setVariables(result.getVariables());
+            ctx.setVariables(fragment.getVariables());
             resp.setContentType("text/html");
-            TemplateEngineHolder.get().process(result.getTemplateName(), ctx, resp.getWriter());
-            resp.setStatus(HttpServletResponse.SC_OK);
+            TemplateEngineHolder.get().process(fragment.getTemplateName(), ctx, resp.getWriter());
+        } else {
+            resp.setContentType("application/json");
+            ObjectMapperHolder.get().writeValue(resp.getWriter(), result);
         }
+        resp.setStatus(HttpServletResponse.SC_OK);
     }
 }

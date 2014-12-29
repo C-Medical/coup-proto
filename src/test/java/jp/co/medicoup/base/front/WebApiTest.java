@@ -30,7 +30,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 public class WebApiTest {
 	private static final Logger logger = LoggerFactory.getLogger(WebApiTest.class);
 
-	public static final class SampleController {
+	public static final class WebApiTestController {
 
 		@GET
 		public void single(@Param("id") long id, @Param("code") String code, @Param("date") DateTime date) {
@@ -48,7 +48,7 @@ public class WebApiTest {
 		}
 
 		@GET
-		public void javaType(@Param SampleParameterDto dto) {
+		public void javaType(@Param WebApiTestDto dto) {
 			logger.debug("dto = {}", dto);
 			assertEquals(123L, dto.id);
 			assertEquals("hoge", dto.code);
@@ -58,7 +58,7 @@ public class WebApiTest {
 		}
 
 		@GET
-		public void javaTypes(@Param("json") @Json List<SampleParameterDto> dtos) {
+		public void javaTypes(@Param("json") @Json List<WebApiTestDto> dtos) {
 			logger.debug("dtos = {}", dtos);
 			for (int i = 0; i < 3; i++) {
 				assertEquals(i, dtos.get(i).id);
@@ -67,7 +67,7 @@ public class WebApiTest {
 		}
 	}
 
-	public static final class SampleParameterDto {
+	public static final class WebApiTestDto {
 		public long id;
 		public String code;
 		public DateTime date;
@@ -94,29 +94,29 @@ public class WebApiTest {
 	public void test_resolveParameters() throws NoSuchMethodException, SecurityException, JsonProcessingException {
 		final Map<String, String[]> param = new HashMap<>();
 
-		final WebApi apiSingle = WebApi.of(SampleController.class,
-				SampleController.class.getMethod("single", long.class, String.class, DateTime.class));
+		final WebApi apiSingle = WebApi.of(WebApiTestController.class,
+				WebApiTestController.class.getMethod("single", long.class, String.class, DateTime.class));
 		param.put("id", new String[] { "123" });
 		param.put("code", new String[] { "hoge" });
 		param.put("date", new String[] { "1982-02-21T12:34:56" });
 		apiSingle.execute(param);
 
-		final WebApi apiCollection = WebApi.of(SampleController.class,
-				SampleController.class.getMethod("collection", Collection.class, String[].class));
+		final WebApi apiCollection = WebApi.of(WebApiTestController.class,
+				WebApiTestController.class.getMethod("collection", Collection.class, String[].class));
 		param.put("ids", new String[] { "123", "456", "789" });
 		param.put("codes", new String[] { "hoge" });
 		apiCollection.execute(param);
 
-		final WebApi apiJavaType = WebApi.of(SampleController.class,
-				SampleController.class.getMethod("javaType", SampleParameterDto.class));
+		final WebApi apiJavaType = WebApi.of(WebApiTestController.class,
+				WebApiTestController.class.getMethod("javaType", WebApiTestDto.class));
 		apiJavaType.execute(param);
 
-		final WebApi apiJavaTypes = WebApi.of(SampleController.class,
-				SampleController.class.getMethod("javaTypes", List.class));
+		final WebApi apiJavaTypes = WebApi.of(WebApiTestController.class,
+				WebApiTestController.class.getMethod("javaTypes", List.class));
 		param.clear();
-		final List<SampleParameterDto> dtos = new ArrayList<>();
+		final List<WebApiTestDto> dtos = new ArrayList<>();
 		for (int i = 0; i < 3; i++) {
-			final SampleParameterDto dto = new SampleParameterDto();
+			final WebApiTestDto dto = new WebApiTestDto();
 			dto.id = i;
 			dto.code = "hoge";
 			dtos.add(dto);
