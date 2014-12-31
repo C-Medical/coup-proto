@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyFactory;
 import com.googlecode.objectify.ObjectifyService;
+import com.googlecode.objectify.impl.translate.opt.BigDecimalLongTranslatorFactory;
 import com.googlecode.objectify.impl.translate.opt.joda.JodaTimeTranslators;
 
 /**
@@ -22,6 +23,7 @@ public final class Objectifys {
     }
 
     static {
+        factory().getTranslators().add(new BigDecimalLongTranslatorFactory());
         JodaTimeTranslators.add(factory());
 
         for (Class<?> clazz : EntityRegistry.values()) {

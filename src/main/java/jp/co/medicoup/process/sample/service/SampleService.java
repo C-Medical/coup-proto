@@ -1,14 +1,14 @@
 package jp.co.medicoup.process.sample.service;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.ArrayList;
 import java.util.List;
 
+import jp.co.medicoup.process.sample.dao.SampleDao;
 import jp.co.medicoup.process.sample.dto.SampleDto;
 
 import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -16,32 +16,34 @@ import org.joda.time.DateTime;
  *
  */
 public class SampleService {
+    private static final Logger logger = LoggerFactory.getLogger(SampleService.class);
 
-    public List<SampleDto> getSampleDtos() {
-        final List<SampleDto> result = new ArrayList<>();
-
+    static {
+        logger.info("サンプルデータを準備。");
+        final SampleDao dao = new SampleDao();
         for (int i = 1; i <= 5; i++) {
             final SampleDto dto = new SampleDto();
-            dto.id = new Long(i);
             dto.name = "hogehoge" + StringUtils.leftPad(String.valueOf(i), 3, "0");
-            dto.date = new DateTime(2015, 4, i, 0, 0, 0);
-            for (int j = 0; j <= i; j++) {
-                dto.someValues.add(new BigDecimal(String.valueOf(i * 1000 + j)));
+            dto.date = DateTime.now();
+            for (int j = 0; j < i; j++) {
+                dto.someValues.add(String.valueOf(i * 1000 + j));
             }
-            result.add(dto);
+            dao.save(dto);
         }
+    }
 
-        return result;
+    private final SampleDao dao = new SampleDao();
+
+    public List<SampleDto> getSampleDtos() {
+        return dao.loadLimit5();
     }
 
     public SampleDto getSampleDto(long id) {
-        final SampleDto dto = new SampleDto();
-        dto.id = id;
-        dto.name = "hogehoge" + StringUtils.leftPad(String.valueOf(id), 3, "0");
+        return dao.load(id);
+    }
+
+    public void save(SampleDto dto) {
         dto.date = DateTime.now();
-        for (int i = 0; i < id; i++) {
-            dto.someValues.add(new BigDecimal(Math.random() * 1000).setScale(0, RoundingMode.HALF_UP));
-        }
-        return dto;
+        dao.save(dto);
     }
 }

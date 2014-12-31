@@ -62,8 +62,9 @@ public final class SampleController {
         // FormパラメータはDTOに変換された形で受けとれる
         logger.debug("Parameter = {}", dto);
 
+        new SampleService().save(dto);
+
         final Map<String, Object> variables = new HashMap<>();
-        dto.date = DateTime.now();
         variables.put("dto", dto);
         variables.put("posted", true);
         return PageResult.withVariables("sample/sample2", variables);
@@ -98,7 +99,7 @@ public final class SampleController {
     public HtmlFragment sample4Fragment() {
         // HTMLフラグメントも返せるよ
         final Map<String, Object> variables = new HashMap<>();
-        variables.put("dto", new SampleService().getSampleDto(5));
+        variables.put("dto", new SampleService().getSampleDtos().get(0));
         return HtmlFragment.create("sample/sample4-fragmet", variables);
     }
 }

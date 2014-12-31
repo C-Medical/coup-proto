@@ -19,6 +19,17 @@
     <welcome-file>top/index.html</welcome-file>
   </welcome-file-list>
 
+  <!-- Objectify -->
+  <filter>
+    <filter-name>ObjectifyFilter</filter-name>
+    <filter-class>com.googlecode.objectify.ObjectifyFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>ObjectifyFilter</filter-name>
+    <url-pattern>/page/*</url-pattern>
+    <url-pattern>/ajax/*</url-pattern>
+  </filter-mapping>
+  
   <!-- セッション情報クリア -->
   <servlet>
     <servlet-name>_ah_sessioncleanup</servlet-name>

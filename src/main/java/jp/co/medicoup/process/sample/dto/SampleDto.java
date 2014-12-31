@@ -1,6 +1,5 @@
 package jp.co.medicoup.process.sample.dto;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +19,7 @@ public class SampleDto {
     public Long id;
     public String name;
     public DateTime date;
-    public final List<BigDecimal> someValues = new ArrayList<>();
+    public List<String> someValues = new ArrayList<>();
 
     @Override
     public String toString() {

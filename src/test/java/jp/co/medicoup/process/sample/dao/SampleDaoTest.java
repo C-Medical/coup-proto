@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.io.Closeable;
 import java.io.IOException;
-import java.math.BigDecimal;
+import java.util.List;
 
 import jp.co.medicoup.process.sample.dto.SampleDto;
 
@@ -41,12 +41,15 @@ public class SampleDaoTest {
 
         SampleDto dto1 = new SampleDto();
         dto1.name = "hoge";
-        dto1.someValues.add(new BigDecimal("123.456"));
+        dto1.someValues.add("test");
         dto1.date = new DateTime(0);
 
         dao.save(dto1);
 
         SampleDto dto2 = dao.load(dto1.id);
         assertEquals(dto1.name, dto2.name);
+
+        List<SampleDto> dtos = dao.loadLimit5();
+        assertEquals(1, dtos.size());
     }
 }
